@@ -369,7 +369,7 @@ function mainDisplay()
 					$_SESSION["No" . $my_little_counter] = $No;
 					?>
 					
-					<label for="<?php echo "Programmes" . $my_little_counter;?>">Programmes*</label>
+					<label for="<?php echo "Programmes" . $my_little_counter;?>">Stent Name*</label>
 					<input type="text" name="<?php echo "Programmes" . $my_little_counter;?>" id="<?php echo "Programmes" . $my_little_counter;?>" value="<?php echo "$Programmes";?>" />
 					
 					<label for="<?php echo "Date" . $my_little_counter;?>">Date*</label>
@@ -378,7 +378,7 @@ function mainDisplay()
 					<label for="<?php echo "Time" . $my_little_counter;?>">Time*</label>
 					<input type="text" name="<?php echo "Time" . $my_little_counter;?>" id="<?php echo "Time" . $my_little_counter;?>" value="<?php echo "$Time";?>" />
 					
-					<label for="<?php echo "Year" . $my_little_counter;?>">Year*</label>
+					<label for="<?php echo "Year" . $my_little_counter;?>">Expiry Year*</label>
 					<input type="text" name="<?php echo "Year" . $my_little_counter;?>" id="<?php echo "Year" . $my_little_counter;?>" value="<?php echo "$Year";?>" />
 					
 					
@@ -405,7 +405,7 @@ function mainDisplay()
 					</select>
 					-->
 					
-					<label for="<?php echo "Credits" . $my_little_counter;?>">Age</label>
+					<label for="<?php echo "Credits" . $my_little_counter;?>">Duration</label>
 					<input type="text" name="<?php echo "Credits" . $my_little_counter;?>" id="<?php echo "Credits" . $my_little_counter;?>" value="<?php echo "$Credits";?>" />
 					
 					<label for="<?php echo "Attendance" . $my_little_counter;?>">No of Attendance Checks</label>
@@ -494,11 +494,11 @@ function mainDisplay()
 					$Time = "0";
 					$JoinedWith = 0;
 					
-					echo "ADD NEW COURSE:<br/>";
+					echo "ADD NEW STENT:<br/>";
 					$_SESSION["No" . $my_little_counter] = $No;
 					?>
 					
-					<label for="<?php echo "Programmes" . $my_little_counter;?>">Programmes*</label>
+					<label for="<?php echo "Programmes" . $my_little_counter;?>">Stent Name*</label>
 					<input type="text" name="<?php echo "Programmes" . $my_little_counter;?>" id="<?php echo "Programmes" . $my_little_counter;?>" value="<?php echo "$Programmes";?>" />
 					
 					<label for="<?php echo "Date" . $my_little_counter;?>">Date*</label>
@@ -507,7 +507,7 @@ function mainDisplay()
 					<label for="<?php echo "Time" . $my_little_counter;?>">Time*</label>
 					<input type="text" name="<?php echo "Time" . $my_little_counter;?>" id="<?php echo "Time" . $my_little_counter;?>" value="<?php echo "$Time";?>" />
 					
-					<label for="<?php echo "Year" . $my_little_counter;?>">Year*</label>
+					<label for="<?php echo "Year" . $my_little_counter;?>">Expiry Year*</label>
 					<input type="text" name="<?php echo "Year" . $my_little_counter;?>" id="<?php echo "Year" . $my_little_counter;?>" value="<?php echo "$Year";?>" />
 					
 					
@@ -543,7 +543,7 @@ function mainDisplay()
 					-->
 					
 					
-					<label for="<?php echo "Credits" . $my_little_counter;?>">Age</label>
+					<label for="<?php echo "Credits" . $my_little_counter;?>">Duration</label>
 					<input type="text" name="<?php echo "Credits" . $my_little_counter;?>" id="<?php echo "Credits" . $my_little_counter;?>" value="<?php echo "$Credits";?>" />
 					
 					
@@ -727,11 +727,11 @@ function mainDisplay()
 						
 						if($sql_mini_mini == null)
 						{
-							echo "<br/><br/>could not delete course";
+							echo "<br/><br/>Could Not Delete Stent";
 						}
 						else
 						{
-							echo "<br/><br/>COURSE DELETED";
+							echo "<br/><br/>STENT DELETED";
 						}
 					}
 				}//end if($_POST["deleteValue". $my_little_counter] == true)
@@ -753,11 +753,11 @@ function mainDisplay()
 										
 					if($sql == null)
 					{
-						echo "<br/><br/>could not add course";
+						echo "<br/><br/>Could Not Add Stent";
 					}
 					else
 					{
-						echo "<br/>NEW COURSE ADDED UPDATED";
+						echo "<br/>NEW STENT ADDED UPDATED";
 					}
 				}//end if($No > getMaxUserID())
 				else
@@ -775,7 +775,7 @@ function mainDisplay()
 											
 					if($sql == null)
 					{
-						echo "<br/><br/>could not update course";
+						echo "<br/><br/>Could Not Update Stent";
 					}
 					else
 					{
