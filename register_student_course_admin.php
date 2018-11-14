@@ -219,7 +219,7 @@ function mainDisplay()
 					
 					<!Multi Select!>
 					<label for="<?php echo "nameOrMatric"?>">SELECT By</label>
-					<select name = "<?php echo "nameOrMatric";?>" id = "<?php echo "nameOrMatric";?>"  size = "2" multiple = "multiple">
+					<select name = "<?php echo "nameOrMatric";?>" id = "<?php echo "nameOrMatric";?>">
 					<?php
 					if($_SESSION['nameOrMatric'] == "first_name")
 					{
@@ -239,10 +239,11 @@ function mainDisplay()
 					</select>
 					
 					<br/>
+					<br/>
 				
 					<!Multi Select!>
 					<label for="<?php echo "student_select_choice"?>">SELECT PATIENT:</label>
-					<select name = "<?php echo "student_select_choice";?>" id = "<?php echo "student_select_choice";?>" size = "15" multiple = "multiple">
+					<select name = "<?php echo "student_select_choice";?>" id = "<?php echo "student_select_choice";?>">
 					<?php
 					
 					
@@ -317,7 +318,7 @@ function mainDisplay()
 					
 					<!Multi Select!>
 					<label for="<?php echo "registered_status_choice"?>">SELECT REGISTERED STATUS</label>
-					<select name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>"  size = "6" multiple = "multiple">
+					<select name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>" >
 					<?php
 					if($_SESSION['registered_status'] == "all")
 					{
@@ -390,7 +391,7 @@ function mainDisplay()
 					</select>
 					
 					
-					<input type = "submit" name = "submit" value = "submit" />
+					<input class="button2 width110 p5" type = "submit" name = "submit" value = "submit" />
 					
 					<br/>
 					<br/>

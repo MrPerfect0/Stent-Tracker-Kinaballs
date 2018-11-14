@@ -17,7 +17,7 @@ $_SESSION['currentDate'] = date("d");
 					$_SESSION["CGPA_BLANK"] = false;
 
 
-if($user_data['role'] == 'administrator')
+if($user_data['role'] == 'administrator'|| $user_data['role'] == 'doctor')
 {
 	header("location: register_for_course.php");
 }
@@ -353,8 +353,8 @@ function mainDisplay()
 					
 					
 					<!Multi Select!>
-					<label for="<?php echo "registered_status_choice"?>">SELECT REGISTERED STATUS</label>
-					<select name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>"  size = "6" multiple = "multiple">
+					<label for="<?php echo "registered_status_choice"?>">Select Registered Status</label>
+					<select name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>">
 					<?php
 					if($_SESSION['registered_status'] == "all")
 					{

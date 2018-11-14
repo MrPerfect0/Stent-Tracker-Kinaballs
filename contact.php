@@ -3,10 +3,16 @@ include 'core/init.php';
 include 'includes/overall/header.php';?>
 		<h1> Contact Details</h1>
 		<br/>
-		<p> Email: info_seru@um.edu.my</p>
+		<p class="bold"> Address:</p>
+		<p>	University Malaya Medical Centre</br>
+			Lembah Pantai,59100</br>
+			Kuala Lumpur, Malaysia.
+		</p>
 		<br/>
-		<p> Phone: 03-7967 7057</p>
+		<p class="bold"> Phone:</p>
+		<p> 03-7949 4422</p>
 		<br/>
-		<p> Website: <a href="http://www.seru.um.edu.my">www.seru.um.edu.my</a></p>
+		<p class="bold"> Website:</p>
+		<p> <a href="https://www.ummc.edu.my">www.ummc.edu.my</a></p>
 
    <?php include 'includes/overall/footer.php';?>

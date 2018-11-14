@@ -24,32 +24,55 @@
                 <div class="inner">
                 <ul>
 				<li>
-				<input style="padding: 5px 60px;" type="button" value="Log out" onclick="window.location.href='logout.php'" />
+				<input class="button2 width180 p10"  type="button" value="Log out" onclick="window.location.href='logout.php'" />
 				</li>
 				<li>
-				<input style="padding: 5px 28px;" type="button" value="Change Password" onclick="window.location.href='changepassword.php'" />
+				<input class="button2 width180 p10" type="button" value="Change Password" onclick="window.location.href='changepassword.php'" />
 				</li>
 				<?php
 					if($user_data['role'] == 'administrator')
 					{
 				?>
 						<li>
-						<input style="padding: 5px 7px;" type="button" value="Check Patient Check Ups" onclick="window.location.href='register_check_credits.php'" />
+						<input class="button2 width180 p10" type="button" value="Check Patient Check Ups" onclick="window.location.href='register_check_credits.php'" />
 						</li>
 						<li>
-						<input style="padding: 5px 37px;" type="button" value="Stent Summary" onclick="window.location.href='register_check_attendance.php'" />
+						<input class="button2 width180 p10" type="button" value="Stent Summary" onclick="window.location.href='register_check_attendance.php'" />
 						</li>
 						<li>
-						<input style="padding: 5px 33px;" type="button" value="Manage Patients" onclick="window.location.href='register_student.php'" />
+						<input class="button2 width180 p10" type="button" value="Manage Users" onclick="window.location.href='register_student.php'" />
 						</li>
 						<li>
-						<input style="padding: 5px 38px;" type="button" value="Manage Stents" onclick="window.location.href='register_for_course.php'" />
+						<input class="button2 width180 p10" type="button" value="Manage Stents" onclick="window.location.href='register_for_course.php'" />
 						</li>
 						<li>
-						<input style="padding: 5px 16px;" type="button" value="Manage Patient Stents" onclick="window.location.href='register_confirm_courses.php'" />
+						<input class="button2 width180 p10" type="button" value="Manage Patient Stents" onclick="window.location.href='register_confirm_courses.php'" />
 						</li>
 						<li>
-						<input style="padding: 5px 3px;" type="button" value="Register Stents for Patients" onclick="window.location.href='register_student_course_admin.php'" />
+						<input class="button2 width180 p10" type="button" value="Register Stents for Patients" onclick="window.location.href='register_student_course_admin.php'" />
+						</li>
+				<?php
+					}
+					else if($user_data['role'] == 'doctor')
+					{
+				?>
+						<li>
+						<input class="button2 width180 p10" type="button" value="Check Patient Check Ups" onclick="window.location.href='register_check_credits.php'" />
+						</li>
+						<li>
+						<input class="button2 width180 p10" type="button" value="Stent Summary" onclick="window.location.href='register_check_attendance.php'" />
+						</li>
+						<!-- <li>
+						<input class="button2 width180 p10" type="button" value="Manage Users" onclick="window.location.href='register_student.php'" />
+						</li> -->
+						<!-- <li>
+						<input class="button2 width180 p10" type="button" value="Manage Stents" onclick="window.location.href='register_for_course.php'" />
+						</li> -->
+						<li>
+						<input class="button2 width180 p10" type="button" value="Manage Patient Stents" onclick="window.location.href='register_confirm_courses.php'" />
+						</li>
+						<li>
+						<input class="button2 width180 p10" type="button" value="Register Stents for Patients" onclick="window.location.href='register_student_course_admin.php'" />
 						</li>
 				<?php
 					}
@@ -57,10 +80,10 @@
 					{
 				?>
 						<li>
-						<input type="button" value="Check Stent" onclick="window.location.href='register_student_course.php'" />
+						<input class="button2 width180 p10" type="button" value="Check Stent" onclick="window.location.href='register_student_course.php'" />
 						</li>
 						<li>
-						<input type="button" value="Update Stent Information" onclick="window.location.href='register_student.php'" />
+						<input class="button2 width180 p10" type="button" value="Update Stent Information" onclick="window.location.href='register_student.php'" />
 						</li>
 				<?php
 				

@@ -16,7 +16,7 @@
 				<a href="changepassword.php">Change Password</a>
 				</li>
 				<?php
-					if($user_data['role'] == 'administrator')
+					if($user_data['role'] == 'administrator'||$user_data['role'] == 'doctor')
 					{
 				?>
 						<li>

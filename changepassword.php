@@ -81,22 +81,22 @@ include 'includes/overall/header.php';?>
 		
 		?>
 
-<form action="" method="post">
+<form style="min-height: 490px" action="" method="post">
 <ul>
 <li>
 Current password*:</br>
-<input type="password" name="current_password">
+<input class="boxshadow" type="password" name="current_password">
 </li>
 <li>
 New password*:</br>
-<input type="password" name="password">
+<input class="boxshadow" type="password" name="password">
 </li>
 <li>
 New password again*:</br>
-<input type="password" name="password_again">
+<input class="boxshadow" type="password" name="password_again">
 </li>
 <li>
-<input type="submit" value="Change password">
+<input class="button2 width145 p5" type="submit" value="Change password">
 </li>
 </ul>
 </form>

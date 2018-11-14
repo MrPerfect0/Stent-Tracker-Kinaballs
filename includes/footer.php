@@ -1,3 +1,3 @@
  <footer>
-        copyright Dr. Ram Gopal Raj, STENT UNIT.
+        Copyright UMMC, STENT UNIT.
     </footer>
