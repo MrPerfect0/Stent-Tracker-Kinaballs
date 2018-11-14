@@ -8,7 +8,7 @@ $_SESSION['currentYear'] = date("Y");
 $_SESSION['currentMonth'] = date("n");
 $_SESSION['currentDate'] = date("d");
 
-if($user_data['role'] != 'administrator')
+if($user_data['role'] != 'administrator' && $user_data['role'] != 'doctor')
 {
 	header("location: register_student_course.php");
 }
@@ -75,7 +75,7 @@ if( isset( $_POST['submit'] ))
 				
 		//echo "<br/>CHANGE = " . $changeValue . "=   CounterMax =" . $_SESSION['counterMax'] . "=";
 		
-		if($changeValue == "true" && $user_data['role'] == 'administrator')
+		if($changeValue == "true" && $user_data['role'] == 'administrator' || $changeValue == "true" && $user_data['role'] == 'doctor' )
 		{			
 			updateUsers($my_little_counter);
 		}//end if($changeValue == true)
@@ -301,10 +301,12 @@ function mainDisplay()
 		
 		
 					<label for="search">Search</label>
-					<input type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
+					&nbsp;&nbsp;
+					<input class="boxshadow" type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
 					
-					
-					<input type = "submit" name = "submit" value = "submit" />
+					&nbsp;&nbsp;
+					<input class="button2 p5 width90" type = "submit" name = "submit" value = "Submit" />
+					</br>
 		<?php
 		
 			//user_data($session_No, 'No', 'Programmes', 'password',  'Date', 'Year', 'email', 'active', 'role', 'Credits', 'IC_number', 'Matric_Number', 'Hand_Phone_Number', 'Kolej_Kediaman');
@@ -370,17 +372,17 @@ function mainDisplay()
 					?>
 					
 					<label for="<?php echo "Programmes" . $my_little_counter;?>">Stent Name*</label>
-					<input type="text" name="<?php echo "Programmes" . $my_little_counter;?>" id="<?php echo "Programmes" . $my_little_counter;?>" value="<?php echo "$Programmes";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Programmes" . $my_little_counter;?>" id="<?php echo "Programmes" . $my_little_counter;?>" value="<?php echo "$Programmes";?>" />
+					&nbsp;&nbsp;
 					<label for="<?php echo "Date" . $my_little_counter;?>">Date*</label>
-					<input type="text" name="<?php echo "Date" . $my_little_counter;?>" id="<?php echo "Date" . $my_little_counter;?>" value="<?php echo "$Date";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Date" . $my_little_counter;?>" id="<?php echo "Date" . $my_little_counter;?>" value="<?php echo "$Date";?>" />
+					&nbsp;&nbsp;
 					<label for="<?php echo "Time" . $my_little_counter;?>">Time*</label>
-					<input type="text" name="<?php echo "Time" . $my_little_counter;?>" id="<?php echo "Time" . $my_little_counter;?>" value="<?php echo "$Time";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Time" . $my_little_counter;?>" id="<?php echo "Time" . $my_little_counter;?>" value="<?php echo "$Time";?>" />
+					</br></br>
 					<label for="<?php echo "Year" . $my_little_counter;?>">Expiry Year*</label>
-					<input type="text" name="<?php echo "Year" . $my_little_counter;?>" id="<?php echo "Year" . $my_little_counter;?>" value="<?php echo "$Year";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Year" . $my_little_counter;?>" id="<?php echo "Year" . $my_little_counter;?>" value="<?php echo "$Year";?>" />
+					&nbsp;&nbsp;
 					
 					<!--
 					<!Multi Select!>
@@ -401,45 +403,52 @@ function mainDisplay()
 						<option value = "student">student</option>
 						<?php
 					}
+					else if($role == "doctor")
+					{
+						?>
+						<option value = "doctor" selected = "selected">doctor</option>
+						<option value = "student">student</option>
+						<?php
+					}
 					?>
 					</select>
 					-->
 					
 					<label for="<?php echo "Credits" . $my_little_counter;?>">Duration</label>
-					<input type="text" name="<?php echo "Credits" . $my_little_counter;?>" id="<?php echo "Credits" . $my_little_counter;?>" value="<?php echo "$Credits";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Credits" . $my_little_counter;?>" id="<?php echo "Credits" . $my_little_counter;?>" value="<?php echo "$Credits";?>" />
+					</br></br>
 					<label for="<?php echo "Attendance" . $my_little_counter;?>">No of Attendance Checks</label>
-					<input type="text" name="<?php echo "Attendance" . $my_little_counter;?>" id="<?php echo "Attendance" . $my_little_counter;?>" value="<?php echo "$Attendance";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Attendance" . $my_little_counter;?>" id="<?php echo "Attendance" . $my_little_counter;?>" value="<?php echo "$Attendance";?>" />
+					&nbsp;&nbsp;
 					<label for="<?php echo "Cost" . $my_little_counter;?>">Cost</label>
-					<input type="text" name="<?php echo "Cost" . $my_little_counter;?>" id="<?php echo "Cost" . $my_little_counter;?>" value="<?php echo "$Cost";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Cost" . $my_little_counter;?>" id="<?php echo "Cost" . $my_little_counter;?>" value="<?php echo "$Cost";?>" />
+					</br></br>
 					<label for="<?php echo "Number_Of_Students" . $my_little_counter;?>">Number_Of_Patients</label>
-					<input type="text" name="<?php echo "Number_Of_Students" . $my_little_counter;?>" id="<?php echo "Number_Of_Students" . $my_little_counter;?>" value="<?php echo "$Number_Of_Students";?>" />
+					<input class="boxshadow" type="text" name="<?php echo "Number_Of_Students" . $my_little_counter;?>" id="<?php echo "Number_Of_Students" . $my_little_counter;?>" value="<?php echo "$Number_Of_Students";?>" />
+					&nbsp;&nbsp;
 					
-					<br/>
 					
 					<label for="<?php echo "JoinedWith" . $my_little_counter;?>">JoinedWith</label>
-					<input type="text" name="<?php echo "JoinedWith" . $my_little_counter;?>" id="<?php echo "JoinedWith" . $my_little_counter;?>" value="<?php echo "$JoinedWith";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "JoinedWith" . $my_little_counter;?>" id="<?php echo "JoinedWith" . $my_little_counter;?>" value="<?php echo "$JoinedWith";?>" />
+					<br/><br/>
 					
 					<label for="<?php echo "ID" . $my_little_counter;?>">ID</label>
-					<input type="text" name="<?php echo "ID" . $my_little_counter;?>" id="<?php echo "ID" . $my_little_counter;?>" readonly="true" value="<?php echo "$No";?>" />
+					<input class="boxshadow" type="text" name="<?php echo "ID" . $my_little_counter;?>" id="<?php echo "ID" . $my_little_counter;?>" readonly="true" value="<?php echo "$No";?>" />
 					
 					
 					
 					<br/>
-					
+					</br>
 					<!Checkbox!>
 					<label for="<?php echo "changeValue" . $my_little_counter;?>">UPDATE</label>
-					<input type="checkbox" name="<?php echo "changeValue" . $my_little_counter;?>" id="<?php echo "changeValue" . $my_little_counter;?>" value="true" />
+					<input class="boxshadow" type="checkbox" name="<?php echo "changeValue" . $my_little_counter;?>" id="<?php echo "changeValue" . $my_little_counter;?>" value="true" />
 					
 					<!Checkbox!>
 					<label for="<?php echo "deleteValue" . $my_little_counter;?>">DELETE STENT</label>
-					<input type="checkbox" name="<?php echo "deleteValue" . $my_little_counter;?>" id="<?php echo "deleteValue" . $my_little_counter;?>" value="true" />
+					<input class="boxshadow" type="checkbox" name="<?php echo "deleteValue" . $my_little_counter;?>" id="<?php echo "deleteValue" . $my_little_counter;?>" value="true" />
 					
-					<input type = "submit" name = "submit" value = "submit" />
-					
+					<input class="button2 p5 width90" type = "submit" name = "submit" value = "Submit" />
+					</br></br>
 					<!--<!Multi Select!>
 					<label for="<?php echo "multiValue" . $my_little_counter;?>">multiValue</label>
 					<select name = "multiValue" id = "multiValue" size = "3" multiple = "multiple">
@@ -497,19 +506,19 @@ function mainDisplay()
 					echo "ADD NEW STENT:<br/>";
 					$_SESSION["No" . $my_little_counter] = $No;
 					?>
-					
+					</br></br>
 					<label for="<?php echo "Programmes" . $my_little_counter;?>">Stent Name*</label>
-					<input type="text" name="<?php echo "Programmes" . $my_little_counter;?>" id="<?php echo "Programmes" . $my_little_counter;?>" value="<?php echo "$Programmes";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Programmes" . $my_little_counter;?>" id="<?php echo "Programmes" . $my_little_counter;?>" value="<?php echo "$Programmes";?>" />
+					&nbsp;&nbsp;
 					<label for="<?php echo "Date" . $my_little_counter;?>">Date*</label>
-					<input type="text" name="<?php echo "Date" . $my_little_counter;?>" id="<?php echo "Date" . $my_little_counter;?>" value="<?php echo "$Date";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Date" . $my_little_counter;?>" id="<?php echo "Date" . $my_little_counter;?>" value="<?php echo "$Date";?>" />
+					&nbsp;&nbsp;
 					<label for="<?php echo "Time" . $my_little_counter;?>">Time*</label>
-					<input type="text" name="<?php echo "Time" . $my_little_counter;?>" id="<?php echo "Time" . $my_little_counter;?>" value="<?php echo "$Time";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Time" . $my_little_counter;?>" id="<?php echo "Time" . $my_little_counter;?>" value="<?php echo "$Time";?>" />
+					</br></br>
 					<label for="<?php echo "Year" . $my_little_counter;?>">Expiry Year*</label>
-					<input type="text" name="<?php echo "Year" . $my_little_counter;?>" id="<?php echo "Year" . $my_little_counter;?>" value="<?php echo "$Year";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Year" . $my_little_counter;?>" id="<?php echo "Year" . $my_little_counter;?>" value="<?php echo "$Year";?>" />
+					&nbsp;&nbsp;
 					
 					
 					<!--
@@ -522,6 +531,7 @@ function mainDisplay()
 						?>
 						<option value = "student" selected = "selected">student</option>
 						<option value = "administrator">administrator</option>
+						<option value = "doctor">doctor</option>
 						<?php
 					}
 					else if($role == "administrator")
@@ -529,6 +539,15 @@ function mainDisplay()
 						?>
 						<option value = "administrator" selected = "selected">administrator</option>
 						<option value = "student">student</option>
+						<option value = "doctor">doctor</option>
+						<?php
+					}
+						else if($role == "doctor")
+					{
+						?>
+						<option value = "doctor" selected = "selected">doctor</option>
+						<option value = "student">student</option>
+						<option value = "administrator">administrator</option>
 						<?php
 					}
 					else
@@ -536,6 +555,7 @@ function mainDisplay()
 						?>
 						<option value = "student" selected = "selected">student</option>
 						<option value = "administrator">administrator</option>
+						<option value = "doctor">doctor</option>
 						<?php
 					}
 					?>
@@ -544,32 +564,32 @@ function mainDisplay()
 					
 					
 					<label for="<?php echo "Credits" . $my_little_counter;?>">Duration</label>
-					<input type="text" name="<?php echo "Credits" . $my_little_counter;?>" id="<?php echo "Credits" . $my_little_counter;?>" value="<?php echo "$Credits";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Credits" . $my_little_counter;?>" id="<?php echo "Credits" . $my_little_counter;?>" value="<?php echo "$Credits";?>" />
+					&nbsp;&nbsp;
 					
 					
 					<label for="<?php echo "Attendance" . $my_little_counter;?>">No of Attendance Checks</label>
-					<input type="text" name="<?php echo "Attendance" . $my_little_counter;?>" id="<?php echo "Attendance" . $my_little_counter;?>" value="<?php echo "$Attendance";?>" />
-					
-					
+					<input class="boxshadow" type="text" name="<?php echo "Attendance" . $my_little_counter;?>" id="<?php echo "Attendance" . $my_little_counter;?>" value="<?php echo "$Attendance";?>" />
+					</br></br>
+		
 					<label for="<?php echo "Cost" . $my_little_counter;?>">Cost</label>
-					<input type="text" name="<?php echo "Cost" . $my_little_counter;?>" id="<?php echo "Cost" . $my_little_counter;?>" value="<?php echo "$Cost";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Cost" . $my_little_counter;?>" id="<?php echo "Cost" . $my_little_counter;?>" value="<?php echo "$Cost";?>" />
+					&nbsp;&nbsp;
 					
 					<label for="<?php echo "Number_Of_Students" . $my_little_counter;?>">Number_Of_Patients</label>
-					<input type="text" name="<?php echo "Number_Of_Students" . $my_little_counter;?>" id="<?php echo "Number_Of_Students" . $my_little_counter;?>" value="<?php echo "$Number_Of_Students";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "Number_Of_Students" . $my_little_counter;?>" id="<?php echo "Number_Of_Students" . $my_little_counter;?>" value="<?php echo "$Number_Of_Students";?>" />
+					&nbsp;&nbsp;
 					
 					<label for="<?php echo "JoinedWith" . $my_little_counter;?>">JoinedWith</label>
-					<input type="text" name="<?php echo "JoinedWith" . $my_little_counter;?>" id="<?php echo "JoinedWith" . $my_little_counter;?>" readonly="true" value="<?php echo "$JoinedWith";?>" />
-					
+					<input class="boxshadow" type="text" name="<?php echo "JoinedWith" . $my_little_counter;?>" id="<?php echo "JoinedWith" . $my_little_counter;?>" readonly="true" value="<?php echo "$JoinedWith";?>" />
+					&nbsp;&nbsp;
 					
 					<!Checkbox!>
 					<label for="<?php echo "changeValue" . $my_little_counter;?>">ADD</label>
-					<input type="checkbox" name="<?php echo "changeValue" . $my_little_counter;?>" id="<?php echo "changeValue" . $my_little_counter;?>" value="true" />
+					<input class="boxshadow" type="checkbox" name="<?php echo "changeValue" . $my_little_counter;?>" id="<?php echo "changeValue" . $my_little_counter;?>" value="true" />
 					
 					
-					<input type = "submit" name = "submit" value = "submit" />
+					<input class="button2 p5 width90" type = "submit" name = "submit" value = "Submit" />
 					
 					<?php
 					$my_little_counter++;
@@ -698,7 +718,7 @@ function mainDisplay()
 					if($sql != null && $row = mysql_fetch_assoc($sql) != null)
 					{						
 						//echo "<br/>courses =" . $row["courses"] . "= ";
-						echo "<br/>STUDENTS ALREADY REGISTERED FOR COURSE, DELETE NOT POSSIBLE!";
+						echo "<br/>PATIENTS ALREADY REGISTERED FOR STENT, DELETE NOT POSSIBLE!";
 					}//end if($sql == null)
 					else
 					{

@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<style>
+		div.dataTables_wrapper {
+        width: 850px;
+    	}	
+	</style>
+</head>
+<body>
+
+
 <?php 
 include 'core/init.php';
 protect_page();
@@ -149,7 +166,7 @@ else if( isset( $_POST['submit'] ))
 			$_SESSION["AttendanceOri" . $my_little_counter] != $AttendanceStudent ||
 			$_SESSION["Paid" . $my_little_counter] != $Paid)
 		{
-				if($user_data['role'] == 'administrator')
+				if($user_data['role'] == 'administrator'|| $user_data['role'] == 'doctor')
 				{
 					//echo "<br/> Changed";
 					$_SESSION["Evaluationform" . $my_little_counter] = $Evaluationform;
@@ -264,6 +281,7 @@ function mainDisplay()
 ?>
 </br>
 </br>
+<div style="width: 80%">
 <form name ="formOne" method ="Post" action ="register_confirm_courses.php">
 <?php
 	accessRulesDisp();
@@ -273,6 +291,7 @@ function mainDisplay()
 
 	
 </form>
+</div>
 
 <!--
 <h1> <?php echo $user_data['Date'];?> You have answered <?php echo $counter-1;?> question and total marks accumulated <?php echo $_SESSION['ActualCFFinal'];?> <?php echo $_SESSION['numglobalMax'];?> </h1>
@@ -349,7 +368,7 @@ function mainDisplay()
 				
 					<!Multi Select!>
 					<label for="<?php echo "student_select_choice"?>">SELECT PATIENT:</label>
-					<select name = "<?php echo "student_select_choice";?>" id = "<?php echo "student_select_choice";?>" size = "15" multiple = "multiple">
+					<select class="boxshadow" name = "<?php echo "student_select_choice";?>" id = "<?php echo "student_select_choice";?>" size = "0" >
 					<?php
 					
 					if(!empty($sql_mini))
@@ -379,13 +398,13 @@ function mainDisplay()
 					if($selectedAlready == false)
 					{
 								?>
-								<option value = "all" selected = "selected">all</option>
+								<option value = "all" selected = "selected">All</option>
 								<?php
 					}
 					else
 					{
 								?>
-								<option value = "all">all</option>
+								<option value = "all">All</option>
 								<?php
 					}
 		
@@ -404,7 +423,7 @@ function mainDisplay()
 				
 					<!Multi Select!>
 					<label for="<?php echo "course_select_choice"?>">SELECT STENT</label>
-					<select name = "<?php echo "course_select_choice";?>" id = "<?php echo "course_select_choice";?>" size = "10" multiple = "multiple">
+					<select class="boxshadow" name = "<?php echo "course_select_choice";?>" id = "<?php echo "course_select_choice";?>" size = "0">
 					<?php
 					
 					if(!empty($sql_mini))
@@ -433,13 +452,13 @@ function mainDisplay()
 					if($selectedAlready == false)
 					{
 								?>
-								<option value = "all" selected = "selected">all</option>
+								<option value = "all" selected = "selected">All</option>
 								<?php
 					}
 					else
 					{
 								?>
-								<option value = "all">all</option>
+								<option value = "all">All</option>
 								<?php
 					}
 		
@@ -450,7 +469,7 @@ function mainDisplay()
 					<br/>
 					<!Multi Select!>
 					<label for="<?php echo "registered_status_choice"?>">SELECT REGISTERED STATUS</label>
-					<select name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>" size = "3" multiple = "multiple">
+					<select class="boxshadow" name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>" size = "0">
 					<?php
 					if($_SESSION['registered_status'] == "all")
 					{
@@ -507,10 +526,12 @@ function mainDisplay()
 					</select>
 					
 					<br/>
+					<br/>
 					<label for="search">Search</label>
-					<input type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
-					
-					<input type = "submit" name = "submit2" value = "Filter" />
+					<input class="boxshadow" type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
+					<br/>
+					<br/>
+					<input class="button2 width90 p5" type = "submit" name = "submit2" value = "Filter" />
 					
 		
 		<?php
@@ -698,30 +719,34 @@ function mainDisplay()
 			try
 			{
 					?>
+				</br>
+				</br>
 					<table class="ep_tm_main"><tr><td align="left">
 					<h1 class="ep_tm_pagetitle"><?php echo "PATIENT STENTS";?> </h1>
 
-	
-				<table>
-					<tr>
-						<td><strong>No</strong></td> 
-						<td><strong>Patient:</strong></td> 
-						<td><strong>Patient ID:</strong></td> 
-						<td><strong>pH:</strong></td> 
-						<td><strong>Total Check Ups Registered:</strong></td>
-						<td><strong>Total Check Ups Completed:</strong></td>		
-						<td><strong>Program:</strong></td>					
-						<td><strong>Duration:</strong></td>					
-						<td><strong>Year:</strong></td>					
-						<td><strong>Age:</strong></td>			
-						<td><strong>Cost:</strong></td>					
-						<td><strong>Registered Status:</strong></td>
-						<td><strong>Left Stent:</strong></td>
-						<td><strong>Right Stent:</strong></td>				
-						<td><strong>Check Up:</strong></td>					
-						<td><strong>Evaluation Form Received:</strong></td>					
-						<td><strong>Payment Received:</strong></td>					
-					</tr>	
+			<div>
+				<table id="patient_stents" class="display nowrap table table-striped" style="width: 100%">
+					<thead>
+						<tr>
+							<td><strong>No</strong></td> 
+							<td><strong>Patient:</strong></td> 
+							<td><strong>Patient ID:</strong></td> 
+							<td><strong>pH:</strong></td> 
+							<td><strong>Total Check Ups Registered:</strong></td>
+							<td><strong>Total Check Ups Completed:</strong></td>		
+							<td><strong>Program:</strong></td>					
+							<td><strong>Duration:</strong></td>					
+							<td><strong>Year:</strong></td>					
+							<td><strong>Age:</strong></td>			
+							<td><strong>Cost:</strong></td>					
+							<td><strong>Registered Status:</strong></td>
+							<td><strong>Left Stent:</strong></td>
+							<td><strong>Right Stent:</strong></td>				
+							<td><strong>Check Up:</strong></td>					
+							<td><strong>Evaluation Form Received:</strong></td>					
+							<td><strong>Payment Received:</strong></td>					
+						</tr>
+					</thead>	
 					<?php
 					
 				if(!empty($sql))
@@ -864,7 +889,7 @@ function mainDisplay()
 					?>				
 					<td bgcolor=" <?php echo "". $color;?>" width="2%">
 					<!Multi Select!>
-					<select name = "<?php echo "registered" . $my_little_counter;?>" id = "<?php echo "registered" . $my_little_counter;?>" size = "3" multiple = "multiple">
+					<select name = "<?php echo "registered" . $my_little_counter;?>" id = "<?php echo "registered" . $my_little_counter;?>">
 					<?php
 					if($registered == "incomplete")
 					{
@@ -1095,12 +1120,15 @@ function mainDisplay()
 				
 				?>
 				</td></tr></table>
+			</div>
 				<?php
+
 			}
 			catch( PDOException $e)
 			{
 				echo "Query failed:".$e->getMessage();
 			}
+			
    }//end function accessRulesDisp()
    
    
@@ -1442,3 +1470,13 @@ function mainDisplay()
 			mysql_close($dbconn) or die ("could not close database");
    
    ?>
+
+   </body>
+		<script>
+			$(document).ready(function() {
+    		$('#patient_stents').DataTable( {
+        		"scrollX": true
+    			} );
+			} );
+		</script>
+</html>

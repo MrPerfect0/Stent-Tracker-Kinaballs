@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<style>
+		div.dataTables_wrapper {
+        width: 850px;
+    	}	
+	</style>
+</head>
+<body>
+
+
 <?php 
 include 'core/init.php';
 protect_page();
@@ -13,7 +30,7 @@ echo "" . $_SESSION['currentYear'] . " - " . $_SESSION['currentMonth'] . " - " .
 
 
 
-if($user_data['role'] != 'administrator')
+if($user_data['role'] != 'administrator' && $user_data['role'] != 'doctor')
 {
 	header("location: register_student_course.php");
 } 
@@ -118,7 +135,8 @@ try
 					<h1 class="ep_tm_pagetitle"><?php echo "PATIENT STENT STATUS";?> </h1>
 
 	
-				<table>
+				<table id="stents_status" class="display nowrap table table-striped" style="width: 100%">
+					<thead>
 					<tr>
 						<td><strong>No</strong></td> 
 						<td><strong>Username:</strong></td> 
@@ -129,10 +147,11 @@ try
 						<td><strong>Gender:</strong></td>					
 						<td><strong>Patients ID:</strong></td>					
 						<td><strong>Hand Phone Number:</strong></td>					
-						<td><strong>Kolej Kediaman:</strong></td>				
+						<td><strong>Address:</strong></td>				
 						<td><strong>Total Check Ups Registered:</strong></td>					
 						<td><strong>Total Check Ups Completed:</strong></td>					
-					</tr>	
+					</tr>
+					</thead>	
 					<?php
 			
 				if(!empty($sql))
@@ -342,3 +361,13 @@ try
 			mysql_close($dbconn) or die ("could not close database");
    
    ?>
+
+   </body>
+		<script>
+			$(document).ready(function() {
+    		$('#stents_status').DataTable( {
+        		"scrollX": true
+    			} );
+			} );
+		</script>
+</html>

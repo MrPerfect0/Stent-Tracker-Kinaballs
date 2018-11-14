@@ -189,23 +189,23 @@ else
 		<form action="" method="post">
 		<ul>
 		<li>
-		username*:<br>
+		Username*:<br>
 		<input type="text" name="username" value="<?php echo "" . $_SESSION['REGISTER_username'];?>">
 		</li>
 		<li>
-		password*:<br>
+		Password*:<br>
 		<input type="password" name="password">
 		</li>
 		<li>
-		password_again*:<br>
+		Password_Again*:<br>
 		<input type="password" name="password_again">
 		</li>
 		<li>
-		first_name* (as appears in IC / Passport):<br>
+		First_Name* (as appears in IC / Passport):<br>
 		<input type="text" name="first_name" value="<?php echo "" . $_SESSION['REGISTER_first_name'];?>">
 		</li>
 		<li>
-		last_name* (as appears in IC / Passport)<br>
+		Last_Name* (as appears in IC / Passport)<br>
 		<input type="text" name="last_name" value="<?php echo "" . $_SESSION['REGISTER_last_name'];?>">
 		</li>
 		<li>
@@ -217,7 +217,7 @@ else
 		<input type="text" name="Matric_Number" value="<?php echo "" . $_SESSION['REGISTER_Matric_Number'];?>">
 		</li>
 		<li>
-		email*:<br>
+		Email*:<br>
 		<input type="text" name="email" value="<?php echo "" . $_SESSION['REGISTER_email'];?>">
 		</li>
 		<li>
@@ -225,7 +225,7 @@ else
 		<input type="text" name="CGPA" value="<?php echo "" . $_SESSION['REGISTER_CGPA'];?>">
 		</li>
 		<li>
-		Kolej Kediaman (1,2,3, International House (IH), Off-campus (OC)):<br>
+		Address:<br>
 		<input type="text" name="Kolej_Kediaman" value="<?php echo "" . $_SESSION['REGISTER_Kolej_Kediaman'];?>">
 		</li>
 		<li>

@@ -78,7 +78,7 @@ if( isset( $_POST['submit'] ))
 		//echo "<br/>CHANGE = " . $changeValue . "=   CounterMax =" . $_SESSION['counterMax'] . "=";
 		
 		if(($_SESSION["changeProtect". $my_little_counter] == "true" || $changeValue == "true") && 
-			($user_data['role'] == 'administrator' || ($user_data['role'] == 'student' && $_POST["username" . $my_little_counter] == $user_data['username'])))
+			($user_data['role'] == 'administrator' ||$user_data['role'] == 'doctor' || ($user_data['role'] == 'student' && $_POST["username" . $my_little_counter] == $user_data['username'])))
 		{			
 			updateUsers($my_little_counter);
 		}//end if($changeValue == true)
@@ -198,7 +198,7 @@ function mainDisplay()
 		}
  
 		?>
-		<h1> PATIENT MANAGEMENT PAGE</h1>
+		<h1> USER MANAGEMENT PAGE</h1>
 		
 		
 				<?php
@@ -236,7 +236,7 @@ function mainDisplay()
 					$CGPA = $row["CGPA"];
 					$Registration_Date = $row["Registration_Date"];*/
 					
-				if($user_data['role'] == 'administrator')
+				if($user_data['role'] == 'administrator' || $user_data['role'] == 'doctor')
 				{
 				?>
 				<script type="text/javascript">
@@ -245,42 +245,42 @@ function mainDisplay()
 				<!Multi Select!>
 					<label for="<?php echo "Order_ByS"?>">Order_By</label>
 						
-						<select name = "<?php echo "Order_ByS";?>" id = "<?php echo "Order_ByS";?>" size = "5" multiple = "multiple">
+						<select class="boxshadow" name = "<?php echo "Order_ByS";?>" id = "<?php echo "Order_ByS";?>">
 						<?php
 						if($_SESSION['Order_By'] == "username")
 						{
 							?>
-							<option value = "username" selected = "selected">username</option>
-							<option value = "last_name">last name</option>					
-							<option value = "first_name">first name</option>				
+							<option value = "username" selected = "selected">Username</option>
+							<option value = "last_name">Last Name</option>					
+							<option value = "first_name">First Name</option>				
 							<option value = "Registration_Date">Registration Date</option>
 							<?php
 						}
 						else if($_SESSION['Order_By'] == "last_name")
 						{
 							?>
-							<option value = "last_name" selected = "selected">last name</option>				
-							<option value = "first_name">first name</option>				
+							<option value = "last_name" selected = "selected">Last Name</option>				
+							<option value = "first_name">First Name</option>				
 							<option value = "Registration_Date">Registration Date</option>
-							<option value = "username">username</option>
+							<option value = "username">Username</option>
 							<?php
 						}
 						else if($_SESSION['Order_By'] == "first_name")
 						{
 							?>
-							<option value = "first_name" selected = "selected">first name</option>				
-							<option value = "last_name">last name</option>				
+							<option value = "first_name" selected = "selected">First Name</option>				
+							<option value = "last_name">Last Name</option>				
 							<option value = "Registration_Date">Registration Date</option>
-							<option value = "username">username</option>
+							<option value = "username">Username</option>
 							<?php
 						}
 						else if($_SESSION['Order_By'] == "Registration_Date")
 						{
 							?>
 							<option value = "Registration_Date" selected = "selected">Registration Date</option>
-							<option value = "last_name">last name</option>				
-							<option value = "first_name">first name</option>
-							<option value = "username">username</option>
+							<option value = "last_name">Last Name</option>				
+							<option value = "first_name">First Name</option>
+							<option value = "username">Username</option>
 							<?php
 						}
 						?>
@@ -290,41 +290,55 @@ function mainDisplay()
 					<br/>
 					
 					<!Multi Select!>
-					<label for="<?php echo "view_roleS"?>">view_role</label>
-					<select name = "<?php echo "view_roleS";?>" id = "<?php echo "view_roleS";?>" size = "3" multiple = "multiple">
+					<label for="<?php echo "view_roleS"?>">View Role</label>
+					<select class="boxshadow" name = "<?php echo "view_roleS";?>" id = "<?php echo "view_roleS";?>">
 					<?php
 					if($_SESSION['view_role'] == "student")
 					{
 						?>
 						<option value = "student" selected = "selected">Patient</option>
-						<option value = "administrator">administrator</option>						
-						<option value = "all">all</option>
+						<option value = "administrator">Administrator</option>	
+						<option value = "doctor">Doctor</option>					
+						<option value = "all">All</option>
 						<?php
 					}
 					else if($_SESSION['view_role'] == "administrator")
 					{
 						?>
-						<option value = "administrator" selected = "selected">administrator</option>				
-						<option value = "all">all</option>
+						<option value = "administrator" selected = "selected">Administrator</option>
+						<option value = "all">All</option>
 						<option value = "student">Patient</option>
+						<option value = "doctor">Doctor</option>
+						<?php
+					}
+					else if($_SESSION['view_role'] == "doctor")
+					{
+						?>
+						<option value = "doctor" selected = "selected">Doctor</option>				
+						<option value = "all">All</option>
+						<option value = "student">Patient</option>
+						<option value = "administrator">Administrator</option>
 						<?php
 					}
 					else if($_SESSION['view_role'] == "all")
 					{
 						?>
-						<option value = "all" selected = "selected">all</option>
-						<option value = "administrator">administrator</option>	
+						<option value = "all" selected = "selected">All</option>
+						<option value = "administrator">Administrator</option>	
 						<option value = "student">Patient</option>
+						<option value = "doctor">Doctor</option>
 						<?php
 					}
 					?>
 					</select>
-					
+					</br>
+					</br>
 					<label for="search">Search</label>
-					<input type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
+					<input class="boxshadow" type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
 					
-					
-					<input type = "submit" name = "submit2" value = "Filter" />
+					</br>
+				</br>
+					<input class="button2 width110 p5" type = "submit" name = "submit2" value = "Filter" />
 		<?php
 		
 		
@@ -472,14 +486,15 @@ function mainDisplay()
 											
 					
 				?>
+			</br></br>
 					<table class="ep_tm_main"><tr><td align="left">	
 				<table>
 					<tr>
 						<td bgcolor=" <?php echo "". $color2;?>"><strong></strong></td> 
-						<td bgcolor=" <?php echo "". $color2;?>"><strong>username*</strong></td> 
-						<td bgcolor=" <?php echo "". $color2;?>"><strong>first_name* <br/>(as in IC / Passport)</strong></td> 
-						<td bgcolor=" <?php echo "". $color2;?>"><strong>last_name* <br/>(as in IC / Passport)</strong></td>
-						<td bgcolor=" <?php echo "". $color2;?>"><strong>email*</strong></td>			
+						<td bgcolor=" <?php echo "". $color2;?>"><strong>Username*</strong></td> 
+						<td bgcolor=" <?php echo "". $color2;?>"><strong>First Name* <br/>(as in IC / Passport)</strong></td> 
+						<td bgcolor=" <?php echo "". $color2;?>"><strong>Last Name* <br/>(as in IC / Passport)</strong></td>
+						<td bgcolor=" <?php echo "". $color2;?>"><strong>Email*</strong></td>			
 					</tr>	
 					<?php	
 					
@@ -514,7 +529,7 @@ function mainDisplay()
 					<tr>
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>IC number</strong></td>		
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Registration Date</strong></td>					
-						<td bgcolor=" <?php echo "". $color2;?>"><strong>role*</strong></td>					
+						<td bgcolor=" <?php echo "". $color2;?>"><strong>Role*</strong></td>					
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Gender*</strong></td>			
 					</tr>	
 					
@@ -533,7 +548,7 @@ function mainDisplay()
 							$_SESSION["changeProtect". $my_little_counter] = "true";
 						}
 					}
-					if($user_data['role'] == 'administrator')
+					if($user_data['role'] == 'administrator'|| $user_data['role'] == 'doctor')
 					{
 					?>
 						<input type="text" name="<?php echo "Registration_Date" . $my_little_counter;?>" id="<?php echo "Registration_Date" . $my_little_counter;?>" readonly="true" value="<?php echo "$Registration_Date";?>" />
@@ -552,30 +567,40 @@ function mainDisplay()
 					
 					<td bgcolor=" <?php echo "". $color;?>" width="2%">
 					<!Multi Select!>
-					<label for="<?php echo "role" . $my_little_counter;?>">role*</label>
-					<select name = "<?php echo "role" . $my_little_counter;?>" id = "<?php echo "role" . $my_little_counter;?>" size = "1" multiple = "multiple">
+					<label for="<?php echo "role" . $my_little_counter;?>">Role*</label>
+					<select name = "<?php echo "role" . $my_little_counter;?>" id = "<?php echo "role" . $my_little_counter;?>">
 					<?php
-					if($user_data['role'] == 'administrator')
+					if($user_data['role'] == 'administrator' || $user_data['role'] == 'doctor')
 					{
 					if($role == "student")
 					{
 						?>
-						<option value = "student" selected = "selected">student</option>
-						<option value = "administrator">administrator</option>
+						<option value = "student" selected = "selected">Patient</option>
+						<option value = "administrator">Administrator</option>
+						<option value = "doctor">Doctor</option>
 						<?php
 					}
 					else if($role == "administrator")
 					{
 						?>
-						<option value = "administrator" selected = "selected">administrator</option>
-						<option value = "student">student</option>
+						<option value = "administrator" selected = "selected">Administrator</option>
+						<option value = "student">Patient</option>
+						<option value = "doctor">Doctor</option>
+						<?php
+					}
+					else if($role == "doctor")
+					{
+						?>
+						<option value = "doctor" selected = "selected">Doctor</option>
+						<option value = "student">Patient</option>
+						<option value = "administrator">Administrator</option>
 						<?php
 					}
 					}//end if($user_data['role'] == 'administrator')
 					else
 					{
 						?>
-						<option value = "student" selected = "selected">student</option>
+						<option value = "student" selected = "selected">Patient</option>
 						<?php
 					}
 					?>
@@ -586,27 +611,27 @@ function mainDisplay()
 					<td bgcolor=" <?php echo "". $color;?>" width="2%">
 					<!Multi Select!>
 					<label for="<?php echo "Title" . $my_little_counter;?>">Gender*</label>
-					<select name = "<?php echo "Title" . $my_little_counter;?>" id = "<?php echo "Title" . $my_little_counter;?>" size = "2" multiple = "multiple">
+					<select name = "<?php echo "Title" . $my_little_counter;?>" id = "<?php echo "Title" . $my_little_counter;?>">
 					<?php
 					if($Title == "male")
 					{
 						?>
-						<option value = "male" selected = "selected">male</option>
-						<option value = "female">female</option>
+						<option value = "male" selected = "selected">Male</option>
+						<option value = "female">Female</option>
 						<?php
 					}
 					else if($Title == "female")
 					{
 						?>
-						<option value = "female" selected = "selected">female</option>
-						<option value = "male">male</option>
+						<option value = "female" selected = "selected">Female</option>
+						<option value = "male">Male</option>
 						<?php
 					}
 					else
 					{
 						?>
-						<option value = "male" selected = "selected">male</option>
-						<option value = "female">female</option>
+						<option value = "male" selected = "selected">Male</option>
+						<option value = "female">Female</option>
 						<?php
 						if($username != null)
 						{
@@ -626,7 +651,7 @@ function mainDisplay()
 					<tr>			
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Patient_ID</strong></td>				
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Hand_Phone_Number</strong></td>				
-						<td bgcolor=" <?php echo "". $color2;?>"><strong>Kolej Kediaman</strong></td>			
+						<td bgcolor=" <?php echo "". $color2;?>"><strong>Location</strong></td>			
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>pH</strong></td>				
 					</tr>
 					
@@ -654,7 +679,7 @@ function mainDisplay()
 				<table>
 					<tr>	
 						<?php
-						if($user_data['role'] == 'administrator')
+						if($user_data['role'] == 'administrator' || $user_data['role'] == 'doctor')
 						{
 						?>
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Reset Password</strong></td>
@@ -665,7 +690,7 @@ function mainDisplay()
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Submit</strong></td>				
 					</tr>
 					<?php
-					if($user_data['role'] == 'administrator')
+					if($user_data['role'] == 'administrator' || $user_data['role'] == 'doctor')
 					{
 					?>
 					<td bgcolor=" <?php echo "". $color;?>" width="2%">
@@ -684,7 +709,7 @@ function mainDisplay()
 					</td><?php echo "\r\n"; ?>
 					
 					<td bgcolor=" <?php echo "". $color;?>" width="2%">
-					<input type = "submit" name = "submit" value = "submit" />
+					<input class="button2 width90 p5" type = "submit" name = "submit" value = "Submit" />
 					</td><?php echo "\r\n"; ?>
 					
 				</table>
@@ -720,7 +745,7 @@ function mainDisplay()
 			}
 			
 			
-			if($user_data['role'] == 'administrator')
+			if($user_data['role'] == 'administrator' || $user_data['role'] == 'doctor')
 			{
 					$my_little_counter_disp = $my_little_counter + 1;
 					echo "<br/><br/>" . $my_little_counter_disp . ") ";
@@ -744,57 +769,68 @@ function mainDisplay()
 					$CGPA = 0.0;
 					
 					
-					echo "ADD NEW USER:<br/>";
+					echo "ADD NEW USER:<br/><br/>";
 					$_SESSION["user_id" . $my_little_counter] = $user_id;
 					$_SESSION["password" . $my_little_counter] = $password;
 					?>
 					
-					<label for="<?php echo "username" . $my_little_counter;?>">username*</label>
-					<input type="text" name="<?php echo "username" . $my_little_counter;?>" id="<?php echo "username" . $my_little_counter;?>" value="<?php echo "$username";?>" />
-					
-					<label for="<?php echo "first_name" . $my_little_counter;?>">first_name*</label>
-					<input type="text" name="<?php echo "first_name" . $my_little_counter;?>" id="<?php echo "first_name" . $my_little_counter;?>" value="<?php echo "$first_name";?>" />
-					
-					<label for="<?php echo "last_name" . $my_little_counter;?>">last_name*</label>
-					<input type="text" name="<?php echo "last_name" . $my_little_counter;?>" id="<?php echo "last_name" . $my_little_counter;?>" value="<?php echo "$last_name";?>" />
-					
-					<label for="<?php echo "email" . $my_little_counter;?>">email*</label>
-					<input type="text" name="<?php echo "email" . $my_little_counter;?>" id="<?php echo "email" . $my_little_counter;?>" value="<?php echo "$email";?>" />
-					
+					<label for="<?php echo "username" . $my_little_counter;?>">Username*</label>
+					<input class="boxshadow" type="text" name="<?php echo "username" . $my_little_counter;?>" id="<?php echo "username" . $my_little_counter;?>" value="<?php echo "$username";?>" />
+					</br></br>
+					<label for="<?php echo "first_name" . $my_little_counter;?>">First Name*</label>
+					<input class="boxshadow" type="text" name="<?php echo "first_name" . $my_little_counter;?>" id="<?php echo "first_name" . $my_little_counter;?>" value="<?php echo "$first_name";?>" />
+					&nbsp; &nbsp;
+					<label for="<?php echo "last_name" . $my_little_counter;?>">Last Name*</label>
+					<input class="boxshadow" type="text" name="<?php echo "last_name" . $my_little_counter;?>" id="<?php echo "last_name" . $my_little_counter;?>" value="<?php echo "$last_name";?>" />
+					</br></br>
+					<label for="<?php echo "email" . $my_little_counter;?>">Email*</label>
+					<input class="boxshadow" type="text" name="<?php echo "email" . $my_little_counter;?>" id="<?php echo "email" . $my_little_counter;?>" value="<?php echo "$email";?>" />
+					&nbsp; &nbsp;
 					<label for="<?php echo "IC_number" . $my_little_counter;?>">IC_number*</label>
-					<input type="text" name="<?php echo "IC_number" . $my_little_counter;?>" id="<?php echo "IC_number" . $my_little_counter;?>" value="<?php echo "$IC_number";?>" />
+					<input class="boxshadow" type="text" name="<?php echo "IC_number" . $my_little_counter;?>" id="<?php echo "IC_number" . $my_little_counter;?>" value="<?php echo "$IC_number";?>" />
 					
-					
+					</br></br>
 					<?php
 						$Registration_Date = "" . $_SESSION['currentDate'] . "-" . $_SESSION['currentMonth'] . "-" . $_SESSION['currentYear']; 
 					?>
-					<label for="<?php echo "Registration_Date" . $my_little_counter;?>">Registration_Date</label>
-					<input type="text" name="<?php echo "Registration_Date" . $my_little_counter;?>" id="<?php echo "Registration_Date" . $my_little_counter;?>" value="<?php echo "$Registration_Date";?>" />
+					<label for="<?php echo "Registration_Date" . $my_little_counter;?>">Registration Date</label>
+					<input class="boxshadow" type="text" name="<?php echo "Registration_Date" . $my_little_counter;?>" id="<?php echo "Registration_Date" . $my_little_counter;?>" value="<?php echo "$Registration_Date";?>" />
 					
-					
+					&nbsp; &nbsp;
 					<!Multi Select!>
-					<label for="<?php echo "role" . $my_little_counter;?>">role*</label>
-					<select name = "<?php echo "role" . $my_little_counter;?>" id = "<?php echo "role" . $my_little_counter;?>" size = "3" multiple = "multiple">
+					<label for="<?php echo "role" . $my_little_counter;?>">Role*</label>
+					<select class="boxshadow" name = "<?php echo "role" . $my_little_counter;?>" id = "<?php echo "role" . $my_little_counter;?>">
 					<?php
 					if($role == "student")
 					{
 						?>
-						<option value = "student" selected = "selected">student</option>
-						<option value = "administrator">administrator</option>
+						<option value = "student" selected = "selected">Patient</option>
+						<option value = "administrator">Administrator</option>
+						<option value = "doctor">Doctor</option>
 						<?php
 					}
 					else if($role == "administrator")
 					{
 						?>
-						<option value = "administrator" selected = "selected">administrator</option>
-						<option value = "student">student</option>
+						<option value = "administrator" selected = "selected">Administrator</option>
+						<option value = "student">Patient</option>
+						<option value = "doctor">Doctor</option>
+						<?php
+					}
+					else if($role == "doctor")
+					{
+						?>
+						<option value = "doctor" selected = "selected">Doctor</option>
+						<option value = "student">Patient</option>
+						<option value = "administrator">Administrator</option>
 						<?php
 					}
 					else
 					{
 						?>
-						<option value = "student" selected = "selected">student</option>
-						<option value = "administrator">administrator</option>
+						<option value = "student" selected = "selected">Patient</option>
+						<option value = "administrator">Administrator</option>
+						<option value = "doctor">Doctor</option>
 						<?php
 					}
 					?>
@@ -804,54 +840,54 @@ function mainDisplay()
 					<label for="<?php echo "Title" . $my_little_counter;?>">Gender</label>
 					<input type="text" name="<?php echo "Title" . $my_little_counter;?>" id="<?php echo "Title" . $my_little_counter;?>" value="<?php echo "$Title";?>" />
 					-->
-					
+					&nbsp; &nbsp;
 					<!Multi Select!>
 					<label for="<?php echo "Title" . $my_little_counter;?>">Gender*</label>
-					<select name = "<?php echo "Title" . $my_little_counter;?>" id = "<?php echo "Title" . $my_little_counter;?>" size = "2" multiple = "multiple">
+					<select class="boxshadow" name = "<?php echo "Title" . $my_little_counter;?>" id = "<?php echo "Title" . $my_little_counter;?>">
 					<?php
 					if($Title == "male")
 					{
 						?>
-						<option value = "male" selected = "selected">male</option>
-						<option value = "female">female</option>
+						<option value = "male" selected = "selected">Male</option>
+						<option value = "female">Female</option>
 						<?php
 					}
 					else if($Title == "female")
 					{
 						?>
-						<option value = "female" selected = "selected">female</option>
-						<option value = "male">male</option>
+						<option value = "female" selected = "selected">Female</option>
+						<option value = "male">Male</option>
 						<?php
 					}
 					else
 					{
 						?>
-						<option value = "male" selected = "selected">male</option>
-						<option value = "female">female</option>
+						<option value = "male" selected = "selected">Male</option>
+						<option value = "female">Female</option>
 						<?php
 					}
 					?>
 					</select>
-					
-					<label for="<?php echo "Matric_Number" . $my_little_counter;?>">Patient_ID</label>
-					<input type="text" name="<?php echo "Matric_Number" . $my_little_counter;?>" id="<?php echo "Matric_Number" . $my_little_counter;?>" value="<?php echo "$Matric_Number";?>" />
-					
-					<label for="<?php echo "Hand_Phone_Number" . $my_little_counter;?>">Hand_Phone_Number</label>
-					<input type="text" name="<?php echo "Hand_Phone_Number" . $my_little_counter;?>" id="<?php echo "Hand_Phone_Number" . $my_little_counter;?>" value="<?php echo "$Hand_Phone_Number";?>" />
-					
-					<label for="<?php echo "Kolej_Kediaman" . $my_little_counter;?>">Kolej_Kediaman</label>
-					<input type="text" name="<?php echo "Kolej_Kediaman" . $my_little_counter;?>" id="<?php echo "Kolej_Kediaman" . $my_little_counter;?>" value="<?php echo "$Kolej_Kediaman";?>" />
-					
+					</br></br>
+					<label for="<?php echo "Matric_Number" . $my_little_counter;?>">Patient ID</label>
+					<input class="boxshadow" type="text" name="<?php echo "Matric_Number" . $my_little_counter;?>" id="<?php echo "Matric_Number" . $my_little_counter;?>" value="<?php echo "$Matric_Number";?>" />
+					&nbsp; &nbsp;
+					<label for="<?php echo "Hand_Phone_Number" . $my_little_counter;?>">Hand Phone Number</label>
+					<input class="boxshadow" type="text" name="<?php echo "Hand_Phone_Number" . $my_little_counter;?>" id="<?php echo "Hand_Phone_Number" . $my_little_counter;?>" value="<?php echo "$Hand_Phone_Number";?>" />
+					</br></br>
+					<label for="<?php echo "Kolej_Kediaman" . $my_little_counter;?>">Location</label>
+					<input class="boxshadow" type="text" name="<?php echo "Kolej_Kediaman" . $my_little_counter;?>" id="<?php echo "Kolej_Kediaman" . $my_little_counter;?>" value="<?php echo "$Kolej_Kediaman";?>" />
+					&nbsp; &nbsp;
 					<label for="<?php echo "CGPA" . $my_little_counter;?>">pH</label>
-					<input type="text" name="<?php echo "CGPA" . $my_little_counter;?>" id="<?php echo "CGPA" . $my_little_counter;?>" value="<?php echo "$CGPA";?>" />
+					<input class="boxshadow" type="text" name="<?php echo "CGPA" . $my_little_counter;?>" id="<?php echo "CGPA" . $my_little_counter;?>" value="<?php echo "$CGPA";?>" />
 					
-					
+					&nbsp; &nbsp;
 					
 					<!Checkbox!>
 					<label for="<?php echo "changeValue" . $my_little_counter;?>">ADD</label>
 					<input type="checkbox" name="<?php echo "changeValue" . $my_little_counter;?>" id="<?php echo "changeValue" . $my_little_counter;?>" value="true" />
 					
-					<input type = "submit" name = "submit" value = "submit" />
+					<input class="button2 width110 p5" type = "submit" name = "submit" value = "Submit" />
 					
 					<?php
 					$my_little_counter++;
@@ -1044,7 +1080,7 @@ function mainDisplay()
 					{
 						echo "<br/><br/>";
 						?>
-						<h1><font color="red">could not update user</font></h1>
+						<h1><font color="red">Could Not Update User</font></h1>
 						<?php
 					}
 					else

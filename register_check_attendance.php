@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<style>
+		div.dataTables_wrapper {
+        width: 850px;
+    	}	
+	</style>
+</head>
+<body>
+
 <?php 
 include 'core/init.php';
 protect_page();
@@ -8,7 +24,7 @@ $_SESSION['currentYear'] = date("Y");
 $_SESSION['currentMonth'] = date("n");
 $_SESSION['currentDate'] = date("d");
 
-if($user_data['role'] != 'administrator')
+if($user_data['role'] != 'administrator' && $user_data['role'] != 'doctor')
 {
 	header("location: register_student_course.php");
 } 
@@ -592,7 +608,7 @@ function mainDisplay()
 						<?php
 						}
 						?>
-						<label for="Show_Residential_College">Residential College</label>
+						<label for="Show_Residential_College">Address</label>
 						<br/>
 						
 						
@@ -696,14 +712,14 @@ function mainDisplay()
 						if($_SESSION["Show_All"] == true)
 						{
 						?>
-							<label for="Show_All">Show all programs</label>
+							<label for="Show_All">Show all stents</label>
 							<input type="checkbox" name="Show_All" id="Show_All" value="true" checked="checked" onclick="this.form.submit();"/>
 						<?php
 						}
 						else
 						{
 						?>
-							<label for="Show_All">Show only programs with participants</label>
+							<label for="Show_All">Show only stents with participants</label>
 							<input type="checkbox" name="Show_All" id="Show_All" value="true" onclick="this.form.submit();"/>
 						<?php
 						}
@@ -729,12 +745,14 @@ function mainDisplay()
 						}
 						?>
 						<br/>
+						<br/>
 					
 					<label for="search">General Search</label>
-					<input type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
-					
+					<input class="boxshadow" type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
+					<br/>
+					<br/>
 					<label for="search">     Search Patient ID</label>
-					<input type="text" name="searchMatric" id="searchMatric" value="<?php echo "" . $_SESSION['searchMatric']; ?>" />
+					<input class="boxshadow" type="text" name="searchMatric" id="searchMatric" value="<?php echo "" . $_SESSION['searchMatric']; ?>" />
 					
 					<input type="checkbox" name="Show_All" id="Show_All" value="true" onclick="this.form.submit();"/>
 				
@@ -1026,7 +1044,8 @@ function mainDisplay()
 					<h1 class="ep_tm_pagetitle"><?php echo "". $Programmes;?> </h1>
 
 					<h2>(Year: <?php echo "". $Year;?>, Date: <?php echo "". $Date;?>, Time: <?php echo "". $Time;?>, Age: <?php echo "". $Credits;?>, Cost: <?php echo "". $Cost;?>)</h2>
-				<table>
+				<table id="stents_summary" class="display nowrap table table-striped" style="width: 100%">
+					<thead>
 					<tr>
 						<td><strong>No</strong></td> 
 						<?php
@@ -1089,7 +1108,7 @@ function mainDisplay()
 						if($_SESSION["Show_Residential_College"] == true)
 						{
 							?>
-							<td><strong>Residential College</strong></td>
+							<td><strong>Address</strong></td>
 							<?php
 						}
 						if($_SESSION["Show_CGPA"] == true)
@@ -1133,7 +1152,8 @@ function mainDisplay()
 						}
 						?>
 						
-					</tr>	
+					</tr>
+					</thead>	
 				<?php
 						$count_ = 0;
 				
@@ -1512,3 +1532,13 @@ function mainDisplay()
 			mysql_close($dbconn) or die ("could not close database");
    
    ?>
+
+   </body>
+		<script>
+			$(document).ready(function() {
+    		$('#stents_summary').DataTable( {
+        		"scrollX": true
+    			} );
+			} );
+		</script>
+</html>
