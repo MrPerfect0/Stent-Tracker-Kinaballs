@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<style>
+		div.dataTables_wrapper {
+        width: 850px;
+    	}	
+	</style>
+</head>
+<body>
+
 <?php 
 include 'core/init.php';
 protect_page();
@@ -439,7 +455,8 @@ function mainDisplay()
 					<h1 class="ep_tm_pagetitle"><?php echo "PATIENT STENTS FOR " . /*$_SESSION['user_id_student'] . ": " .*/ $_SESSION['student_select'];?> </h1>
 
 	
-				<table>
+				<table id="patient_stents" class="display nowrap table table-striped" style="width: 100%">
+					<thead>
 					<tr>
 						<td><strong>No</strong></td> 
 						<td><strong>Program:</strong></td> 
@@ -451,7 +468,8 @@ function mainDisplay()
 						<td><strong>Paid:</strong></td>					
 						<td><strong>Registration Status:</strong></td>	
 						<td><strong></strong></td>					
-					</tr>	
+					</tr>
+					</thead>	
 					<?php
 					
 				if(!empty($sql))
@@ -2007,3 +2025,13 @@ function mainDisplay()
 			mysql_close($dbconn) or die ("could not close database");
    
    ?>
+
+   </body>
+		<script>
+			$(document).ready(function() {
+    		$('#patient_stents').DataTable( {
+        		"scrollX": true
+    			} );
+			} );
+		</script>
+</html>
