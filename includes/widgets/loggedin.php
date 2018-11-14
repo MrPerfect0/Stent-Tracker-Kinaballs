@@ -83,7 +83,7 @@
 						<input class="button2 width180 p10" type="button" value="Check Stent" onclick="window.location.href='register_student_course.php'" />
 						</li>
 						<li>
-						<input class="button2 width180 p10" type="button" value="Update Stent Information" onclick="window.location.href='register_student.php'" />
+						<input class="button2 width180 p10" type="button" value="Update User Information" onclick="window.location.href='register_student.php'" />
 						</li>
 				<?php
 				
