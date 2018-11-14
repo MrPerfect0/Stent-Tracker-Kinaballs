@@ -476,7 +476,7 @@ function mainDisplay()
 											if(($count_ % 2) == 1)
 											{
 												$color = "#e6e6fa";
-												$color2 = "#7FFFD4";
+												$color2 = "#61bcff";
 											}
 											else
 											{

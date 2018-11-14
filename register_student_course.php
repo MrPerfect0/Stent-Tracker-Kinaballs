@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<style>
+		div.dataTables_wrapper {
+        width: 850px;
+    	}	
+	</style>
+</head>
+<body>
+
 <?php 
 include 'core/init.php';
 protect_page();
@@ -17,7 +33,7 @@ $_SESSION['currentDate'] = date("d");
 					$_SESSION["CGPA_BLANK"] = false;
 
 
-if($user_data['role'] == 'administrator'|| $user_data['role'] == 'doctor')
+if($user_data['role'] == 'administrator')
 {
 	header("location: register_for_course.php");
 }
@@ -348,13 +364,13 @@ function mainDisplay()
 		<h1> STENT REGISTRATION PAGE</h1>
 		
 		<br/><br/>
-					<label for="search">Search</label>
-					<input type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
-					
+					<label for="search">Search</label> &nbsp;&nbsp;
+					<input class="boxshadow" type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
+					<br/><br/>
 					
 					<!Multi Select!>
-					<label for="<?php echo "registered_status_choice"?>">Select Registered Status</label>
-					<select name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>">
+					<label for="<?php echo "registered_status_choice"?>">Select Registered Status</label>&nbsp;&nbsp;
+					<select class="boxshadow" name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>">
 					<?php
 					if($_SESSION['registered_status'] == "all")
 					{
@@ -426,8 +442,9 @@ function mainDisplay()
 					?>
 					</select>
 					
-					
-					<input type = "submit" name = "submit" value = "submit" />
+					<br/>
+					<br/>
+					<input class="button2 p5 width90" type = "submit" name = "submit" value = "Submit" />
 					
 					<br/>
 					<br/>
@@ -461,7 +478,8 @@ function mainDisplay()
 					<h1 class="ep_tm_pagetitle"><?php echo "PATIENT STENTS";?> </h1>
 
 	
-				<table>
+				<table id="register_student_table" class="display nowrap table table-striped" style="width: 100%">
+					<thead>
 					<tr>
 						<td><strong>No</strong></td> 
 						<td><strong>Program:</strong></td> 
@@ -475,7 +493,8 @@ function mainDisplay()
 						<td><strong>Paid:</strong></td>					
 						<td><strong>Registration Status:</strong></td>	
 						<td><strong></strong></td>					
-					</tr>	
+					</tr>
+					</thead>	
 					<?php
 					
 				if(!empty($sql))
@@ -630,7 +649,7 @@ function mainDisplay()
 									//$dateClashes = getTIMEClash($user_data['user_id']);
 									//if($dateClashes == true)
 									//{
-									$dateClashText = "; Course Timing Clashes With Course Already Registered";
+									$dateClashText = "; Stent Timing Clashes With Stent Already Registered";
 									//}
 								}
 								else
@@ -639,13 +658,13 @@ function mainDisplay()
 									
 									if($dateClashes == true)
 									{
-										$dateClashText = "; Course Fully Subscribed";
+										$dateClashText = "; Stent Fully Subscribed";
 									}
 								}
 							}
 							else
 							{
-								$dateClashText = "; Cannot Register once Course Over";
+								$dateClashText = "; Cannot Register once Stent Over";
 							}
 						 }//end if($registered == "notregistered")
 					?>
@@ -677,7 +696,7 @@ function mainDisplay()
 						if($_SESSION['currentYear'] <= $Year && $dateWithinFiveDays == false)
 						{
 						?>
-							<option value = "unregistered">Un-Register (once course dropped, cannot re-register)</option>
+							<option value = "unregistered">Un-Register (once stent dropped, cannot re-register)</option>
 						<?php
 						}//end if($_SESSION['currentYear'] <= $Year)
 					}
@@ -705,7 +724,7 @@ function mainDisplay()
 					</td><?php echo "\r\n"; ?>
 					
 					<td bgcolor=" <?php echo "". $color;?>" width="2%">
-					<input type = "submit" name = "submit" value = "submit" />
+					<input class="button2 p5 width90" type = "submit" name = "submit" value = "Submit" />
 					</td><?php echo "\r\n"; ?>
 					
 					
@@ -1897,14 +1916,14 @@ function mainDisplay()
 					{
 						echo "<br/><br/>";
 						?>
-						<h1><font color="red">could not add course</font></h1>
+						<h1><font color="red">could not add stent</font></h1>
 						<?php
 					}
 					else
 					{
 						echo "<br/>";
 						?>
-						<h1><font color="red"><b>NEW COURSE ADDED</b></font></h1>
+						<h1><font color="red"><b>NEW STENT ADDED</b></font></h1>
 						<?php
 					}
 				}//end if($student_id == -100)
@@ -1924,14 +1943,14 @@ function mainDisplay()
 					{
 						echo "<br/><br/>";
 						?>
-						<h1><font color="red">could not update course</font></h1>
+						<h1><font color="red">could not update stent</font></h1>
 						<?php
 					}
 					else
 					{
 						echo "<br/>";
 						?>
-						<h1><font color="red"><b>COURSE UPDATED</b></font></h1>
+						<h1><font color="red"><b>STENT UPDATED</b></font></h1>
 						<?php
 					}
 				}//end else for if($sqlTest == null)
@@ -2069,3 +2088,13 @@ function mainDisplay()
 			mysql_close($dbconn) or die ("could not close database");
    
    ?>
+
+   </body>
+		<script>
+			$(document).ready(function() {
+    		$('#register_student_table').DataTable( {
+        		"scrollX": true
+    			} );
+			} );
+		</script>
+</html>
