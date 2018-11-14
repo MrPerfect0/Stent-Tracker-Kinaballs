@@ -1097,8 +1097,8 @@ function mainDisplay()
 					
 					
 					<br/>
-					
-					<input type = "submit" name = "submit" value = "submit" />
+					<br/>
+					<input class="button2 p5 width90" type = "submit" name = "submit" value = "Submit" />
 					
 					</td><?php echo "\r\n"; ?>
 					

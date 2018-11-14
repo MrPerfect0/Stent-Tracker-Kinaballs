@@ -210,16 +210,16 @@ function mainDisplay()
 		
 		
 					
-					<label for="search">Search Patients</label>
-					<input type="text" name="searchStudent" id="searchStudent" value="<?php echo "" . $_SESSION['searchStudent']; ?>" />
+					<label for="search">Search Patients</label>&nbsp;
+					<input class="boxshadow" type="text" name="searchStudent" id="searchStudent" value="<?php echo "" . $_SESSION['searchStudent']; ?>" />
 					
 					<br/>
 					<br/>
 										
 					
 					<!Multi Select!>
-					<label for="<?php echo "nameOrMatric"?>">SELECT By</label>
-					<select name = "<?php echo "nameOrMatric";?>" id = "<?php echo "nameOrMatric";?>">
+					<label for="<?php echo "nameOrMatric"?>">Select By</label>&nbsp;
+					<select class="boxshadow" name = "<?php echo "nameOrMatric";?>" id = "<?php echo "nameOrMatric";?>">
 					<?php
 					if($_SESSION['nameOrMatric'] == "first_name")
 					{
@@ -242,8 +242,8 @@ function mainDisplay()
 					<br/>
 				
 					<!Multi Select!>
-					<label for="<?php echo "student_select_choice"?>">SELECT PATIENT:</label>
-					<select name = "<?php echo "student_select_choice";?>" id = "<?php echo "student_select_choice";?>">
+					<label for="<?php echo "student_select_choice"?>">Select Patient:</label>
+					<select class="boxshadow" name = "<?php echo "student_select_choice";?>" id = "<?php echo "student_select_choice";?>">
 					<?php
 					
 					
@@ -311,14 +311,13 @@ function mainDisplay()
 					</select>
 					<br/>
 					<br/>
-		<br/><br/>
 					<label for="search">Search Stents</label>
-					<input type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
-					
-					
+					<input class="boxshadow" type="text" name="search" id="search" value="<?php echo "" . $_SESSION['search']; ?>" />
+					<br/><br/>
+
 					<!Multi Select!>
-					<label for="<?php echo "registered_status_choice"?>">SELECT REGISTERED STATUS</label>
-					<select name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>" >
+					<label for="<?php echo "registered_status_choice"?>">Select Registered Status</label>
+					<select class="boxshadow" name = "<?php echo "registered_status_choice";?>" id = "<?php echo "registered_status_choice";?>" >
 					<?php
 					if($_SESSION['registered_status'] == "all")
 					{
@@ -390,8 +389,8 @@ function mainDisplay()
 					?>
 					</select>
 					
-					
-					<input class="button2 width110 p5" type = "submit" name = "submit" value = "submit" />
+					<br/><br/>
+					<input class="button2 width110 p5" type = "submit" name = "submit" value = "Submit" />
 					
 					<br/>
 					<br/>
@@ -610,7 +609,7 @@ function mainDisplay()
 								
 								if($dateClashes == true)
 								{
-									$dateClashText = "; Course Timing Clashes With Course Already Registered";
+									$dateClashText = "; Stent Clashes With Stent Already Registered";
 								}
 								else
 								{
@@ -618,13 +617,13 @@ function mainDisplay()
 									
 									if($dateClashes == true)
 									{
-										$dateClashText = "; Course Fully Subscribed";
+										$dateClashText = "; Stent Fully Subscribed";
 									}
 								}
 							}
 							else
 							{
-								$dateClashText = "; Cannot Register once Course Over";
+								$dateClashText = "; Cannot Register once Stent Over";
 							}
 							
 							$dateClashes = false;
@@ -651,7 +650,7 @@ function mainDisplay()
 																							echo " (cannot unregister 5 days before program starts)";
 																						}?></option>
 						
-							<option value = "unregistered">UN-REGISTER (once course dropped, cannot re-register)</option>
+							<option value = "unregistered">UN-REGISTER (once stent dropped, cannot re-register)</option>
 						<?php
 					}
 					else if($registered == "unregistered")
@@ -678,7 +677,7 @@ function mainDisplay()
 					</td><?php echo "\r\n"; ?>
 					
 					<td bgcolor=" <?php echo "". $color;?>" width="2%">
-					<input type = "submit" name = "submit" value = "submit" />
+					<input class="button2 p5 width90" type = "submit" name = "submit" value = "Submit" />
 					</td><?php echo "\r\n"; ?>
 					
 					
@@ -1836,7 +1835,7 @@ function mainDisplay()
 					if($sql == null)
 					{
 						?>
-						<font size="6" "color="red"><br/><br/>could not add course</font>
+						<font size="6" "color="red"><br/><br/>could not add stent</font>
 						<?php
 						//echo "<br/><br/>could not add course";
 					}
@@ -1862,7 +1861,7 @@ function mainDisplay()
 					if($sql == null)
 					{
 						?>
-						<font size="6" color="red"><br/><br/>could not update course</font>
+						<font size="6" color="red"><br/><br/>could not update stent</font>
 						<?php
 						//echo "<br/><br/>could not update course";
 					}

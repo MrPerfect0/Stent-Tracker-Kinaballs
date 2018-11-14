@@ -1044,7 +1044,8 @@ function mainDisplay()
 					<h1 class="ep_tm_pagetitle"><?php echo "". $Programmes;?> </h1>
 
 					<h2>(Year: <?php echo "". $Year;?>, Date: <?php echo "". $Date;?>, Time: <?php echo "". $Time;?>, Age: <?php echo "". $Credits;?>, Cost: <?php echo "". $Cost;?>)</h2>
-				<table id="stents_summary" class="display nowrap table table-striped" style="width: 100%">
+
+				<table class="display nowrap table table-striped" style="width: 100%">
 					<thead>
 					<tr>
 						<td><strong>No</strong></td> 
@@ -1536,7 +1537,7 @@ function mainDisplay()
    </body>
 		<script>
 			$(document).ready(function() {
-    		$('#stents_summary').DataTable( {
+    		$('table.display').DataTable( {
         		"scrollX": true
     			} );
 			} );
