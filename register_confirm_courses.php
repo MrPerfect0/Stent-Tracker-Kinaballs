@@ -70,7 +70,7 @@ $dbconn = mysql_connect("localhost", "root", $mysqlPassword)or die($connect_erro
 	
 	$studentName;
 	
-	$mainMessage = "COURSE";
+	$mainMessage = "STENT";
 	
 	
 	
@@ -159,7 +159,7 @@ else if( isset( $_POST['submit'] ))
 				}
 			}
 			
-			$mainMessage = "COURSE";
+			$mainMessage = "STENT";
 			
 		if($_POST["registered". $my_little_counter] != $_SESSION["registeredOri" . $my_little_counter] ||
 			$_SESSION["Evaluationform" . $my_little_counter] != $Evaluationform ||

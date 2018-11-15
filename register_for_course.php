@@ -417,18 +417,18 @@ function mainDisplay()
 					<label for="<?php echo "Credits" . $my_little_counter;?>">Duration</label>
 					<input class="boxshadow" type="text" name="<?php echo "Credits" . $my_little_counter;?>" id="<?php echo "Credits" . $my_little_counter;?>" value="<?php echo "$Credits";?>" />
 					</br></br>
-					<label for="<?php echo "Attendance" . $my_little_counter;?>">No of Attendance Checks</label>
+					<label for="<?php echo "Attendance" . $my_little_counter;?>">No of Check Ups</label>
 					<input class="boxshadow" type="text" name="<?php echo "Attendance" . $my_little_counter;?>" id="<?php echo "Attendance" . $my_little_counter;?>" value="<?php echo "$Attendance";?>" />
 					&nbsp;&nbsp;
 					<label for="<?php echo "Cost" . $my_little_counter;?>">Cost</label>
 					<input class="boxshadow" type="text" name="<?php echo "Cost" . $my_little_counter;?>" id="<?php echo "Cost" . $my_little_counter;?>" value="<?php echo "$Cost";?>" />
 					</br></br>
-					<label for="<?php echo "Number_Of_Students" . $my_little_counter;?>">Number_Of_Patients</label>
+					<label for="<?php echo "Number_Of_Students" . $my_little_counter;?>">Number of Patients</label>
 					<input class="boxshadow" type="text" name="<?php echo "Number_Of_Students" . $my_little_counter;?>" id="<?php echo "Number_Of_Students" . $my_little_counter;?>" value="<?php echo "$Number_Of_Students";?>" />
 					&nbsp;&nbsp;
 					
 					
-					<label for="<?php echo "JoinedWith" . $my_little_counter;?>">JoinedWith</label>
+					<label for="<?php echo "JoinedWith" . $my_little_counter;?>">Joined With</label>
 					<input class="boxshadow" type="text" name="<?php echo "JoinedWith" . $my_little_counter;?>" id="<?php echo "JoinedWith" . $my_little_counter;?>" value="<?php echo "$JoinedWith";?>" />
 					<br/><br/>
 					
@@ -568,7 +568,7 @@ function mainDisplay()
 					&nbsp;&nbsp;
 					
 					
-					<label for="<?php echo "Attendance" . $my_little_counter;?>">No of Attendance Checks</label>
+					<label for="<?php echo "Attendance" . $my_little_counter;?>">No of Check Ups</label>
 					<input class="boxshadow" type="text" name="<?php echo "Attendance" . $my_little_counter;?>" id="<?php echo "Attendance" . $my_little_counter;?>" value="<?php echo "$Attendance";?>" />
 					</br></br>
 		
@@ -576,11 +576,11 @@ function mainDisplay()
 					<input class="boxshadow" type="text" name="<?php echo "Cost" . $my_little_counter;?>" id="<?php echo "Cost" . $my_little_counter;?>" value="<?php echo "$Cost";?>" />
 					&nbsp;&nbsp;
 					
-					<label for="<?php echo "Number_Of_Students" . $my_little_counter;?>">Number_Of_Patients</label>
+					<label for="<?php echo "Number_Of_Students" . $my_little_counter;?>">Number of Patients</label>
 					<input class="boxshadow" type="text" name="<?php echo "Number_Of_Students" . $my_little_counter;?>" id="<?php echo "Number_Of_Students" . $my_little_counter;?>" value="<?php echo "$Number_Of_Students";?>" />
 					&nbsp;&nbsp;
 					
-					<label for="<?php echo "JoinedWith" . $my_little_counter;?>">JoinedWith</label>
+					<label for="<?php echo "JoinedWith" . $my_little_counter;?>">Joined With</label>
 					<input class="boxshadow" type="text" name="<?php echo "JoinedWith" . $my_little_counter;?>" id="<?php echo "JoinedWith" . $my_little_counter;?>" readonly="true" value="<?php echo "$JoinedWith";?>" />
 					&nbsp;&nbsp;
 					
@@ -777,7 +777,7 @@ function mainDisplay()
 					}
 					else
 					{
-						echo "<br/>NEW STENT ADDED UPDATED";
+						echo "<br/>NEW STENT ADDED";
 					}
 				}//end if($No > getMaxUserID())
 				else
