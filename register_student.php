@@ -651,7 +651,7 @@ function mainDisplay()
 					<tr>			
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Patient_ID</strong></td>				
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>Hand_Phone_Number</strong></td>				
-						<td bgcolor=" <?php echo "". $color2;?>"><strong>Location</strong></td>			
+						<td bgcolor=" <?php echo "". $color2;?>"><strong>Address</strong></td>			
 						<td bgcolor=" <?php echo "". $color2;?>"><strong>pH</strong></td>				
 					</tr>
 					
@@ -875,7 +875,7 @@ function mainDisplay()
 					<label for="<?php echo "Hand_Phone_Number" . $my_little_counter;?>">Hand Phone Number</label>
 					<input class="boxshadow" type="text" name="<?php echo "Hand_Phone_Number" . $my_little_counter;?>" id="<?php echo "Hand_Phone_Number" . $my_little_counter;?>" value="<?php echo "$Hand_Phone_Number";?>" />
 					</br></br>
-					<label for="<?php echo "Kolej_Kediaman" . $my_little_counter;?>">Location</label>
+					<label for="<?php echo "Kolej_Kediaman" . $my_little_counter;?>">Address</label>
 					<input class="boxshadow" type="text" name="<?php echo "Kolej_Kediaman" . $my_little_counter;?>" id="<?php echo "Kolej_Kediaman" . $my_little_counter;?>" value="<?php echo "$Kolej_Kediaman";?>" />
 					&nbsp; &nbsp;
 					<label for="<?php echo "CGPA" . $my_little_counter;?>">pH</label>
@@ -1048,14 +1048,14 @@ function mainDisplay()
 						//echo "<br/>" . $theQueryToExecute;
 						echo "<br/><br/>";
 						?>
-						<h1><font color="red">could not add user</font></h1>
+						<h1><font color="red">Could Not Add User</font></h1>
 						<?php
 					}
 					else
 					{
 						echo "<br/>";
 						?>
-						<h1><font color="red">NEW USER ADDED UPDATED</font></h1>
+						<h1><font color="red">NEW USER ADDED</font></h1>
 						<?php
 					}
 				}//end if($user_id > getMaxUserID())

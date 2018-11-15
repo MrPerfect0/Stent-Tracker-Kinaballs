@@ -1115,7 +1115,7 @@ function mainDisplay()
 						if($_SESSION["Show_CGPA"] == true)
 						{
 							?>
-							<td><strong>CGPA</strong></td>
+							<td><strong>pH</strong></td>
 							<?php
 						}
 						if($_SESSION["Show_Attendance"] == true)
